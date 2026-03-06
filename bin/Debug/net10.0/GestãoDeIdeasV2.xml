@@ -4,6 +4,71 @@
         <name>GestãoDeIdeasV2</name>
     </assembly>
     <members>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.GetAll">
+            <summary>
+            Retrieves all ideas.
+            </summary>
+            <remarks>
+            Returns the complete list of ideas currently stored.
+            </remarks>
+            <response code="200">Ideas retrieved successfully.</response>
+        </member>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.GetById(System.Int32)">
+            <summary>
+            Retrieves an idea by its unique identifier.
+            </summary>
+            <param name="id">The unique identifier of the idea.</param>
+            <remarks>
+            Returns the idea that matches the provided ID.
+            </remarks>
+            <response code="200">Idea retrieved successfully.</response>
+            <response code="404">No idea exists with the provided ID.</response>
+        </member>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.GetByPriority(System.Int32)">
+            <summary>
+            Retrieves ideas filtered by priority.
+            </summary>
+            <param name="priority">The priority value used to filter ideas.</param>
+            <remarks>
+            Returns all ideas that have the specified priority level.
+            </remarks>
+            <response code="200">Ideas with the specified priority retrieved successfully.</response>
+            <response code="404">No ideas exist with the provided priority.</response>
+        </member>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.Create(GestãoDeIdeasV2.Dtos.CreateIdea)">
+            <summary>
+            Creates a new idea.
+            </summary>
+            <param name="createIdea">The data used to create a new idea.</param>
+            <remarks>
+            Creates a new idea and returns the created resource with its generated identifier.
+            </remarks>
+            <response code="201">Idea created successfully.</response>
+            <response code="400">The request data is invalid.</response>
+        </member>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.Update(System.Int32,GestãoDeIdeasV2.Dtos.UpdateIdea)">
+            <summary>
+            Updates an existing idea.
+            </summary>
+            <param name="id">The unique identifier of the idea to update.</param>
+            <param name="updateIdea">The updated values for the idea.</param>
+            <remarks>
+            Updates the idea that matches the provided ID with the supplied data.
+            </remarks>
+            <response code="200">Idea updated successfully.</response>
+            <response code="404">No idea exists with the provided ID.</response>
+        </member>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.Delete(System.Int32)">
+            <summary>
+            Deletes an idea.
+            </summary>
+            <param name="id">The unique identifier of the idea to delete.</param>
+            <remarks>
+            Removes the idea that matches the provided ID from the system.
+            </remarks>
+            <response code="204">Idea deleted successfully.</response>
+            <response code="404">No idea exists with the provided ID.</response>
+        </member>
         <member name="T:GestãoDeIdeasV2.Migrations.InitialCreate">
             <inheritdoc />
         </member>

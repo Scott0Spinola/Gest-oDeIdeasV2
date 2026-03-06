@@ -1,6 +1,7 @@
 using GestãoDeIdeasV2.Data;
 using GestãoDeIdeasV2.Services;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,14 +13,29 @@ builder.Services.AddScoped<IdeasService>();
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddValidation();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    c.IncludeXmlComments(xmlPath, includeControllerXmlComments: true);
+});
+
+builder.Services.AddHttpClient<IAdviceService, AdviceService>(client =>
+{
+    client.BaseAddress = new Uri("https://api.adviceslip.com/advice");
+});
+
 
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ideas.API v1");
+        c.DocumentTitle = "Ideas.API";
+    });
 }
 
 app.UseHttpsRedirection();
@@ -30,6 +46,7 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<IdeaContext>();
     db.Database.Migrate();
+    IdeaMaintenanceService.UpdateOutdatedIdeas( db, DateTime.UtcNow);
 }
 
 app.Run();
