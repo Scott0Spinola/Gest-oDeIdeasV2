@@ -1,0 +1,140 @@
+2026-03-06 13:30:06.007 +00:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-03-06 13:30:06.082 +00:00 [INF] Executed DbCommand (21ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2026-03-06 13:30:06.090 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2026-03-06 13:30:06.0878529+00:00');
+SELECT changes();
+2026-03-06 13:30:06.145 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2026-03-06 13:30:06.152 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-03-06 13:30:06.155 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-03-06 13:30:06.161 +00:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-06 13:30:06.164 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+2026-03-06 13:30:06.392 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@cutoffDate='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedAt", "i"."Description", "i"."Name", "i"."Priority", "i"."State"
+FROM "Ideas" AS "i"
+WHERE "i"."CreatedAt" <= @cutoffDate AND "i"."State" <> 1 AND "i"."State" <> 2
+2026-03-06 13:30:06.431 +00:00 [INF] Now listening on: http://localhost:5105
+2026-03-06 13:30:06.434 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-06 13:30:06.435 +00:00 [INF] Hosting environment: Development
+2026-03-06 13:30:06.435 +00:00 [INF] Content root path: C:\Users\spino\Desktop\GestãoDeideasV2\GestãoDeIdeasV2
+2026-03-06 13:30:23.257 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2026-03-06 13:30:23.387 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 304 null null 131.4206ms
+2026-03-06 13:30:23.433 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui.css - null null
+2026-03-06 13:30:23.433 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.css - null null
+2026-03-06 13:30:23.434 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-bundle.js - null null
+2026-03-06 13:30:23.434 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-06 13:30:23.434 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.js - null null
+2026-03-06 13:30:23.448 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.js - 304 null null 13.8664ms
+2026-03-06 13:30:23.455 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-standalone-preset.js - 304 null null 20.6948ms
+2026-03-06 13:30:23.455 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.css - 304 null null 22.028ms
+2026-03-06 13:30:23.455 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui.css - 304 null null 22.0281ms
+2026-03-06 13:30:23.465 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-bundle.js - 304 null null 29.968ms
+2026-03-06 13:30:23.588 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2026-03-06 13:30:23.599 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/favicon-32x32.png - null null
+2026-03-06 13:30:23.606 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/favicon-32x32.png - 304 null null 6.6038ms
+2026-03-06 13:30:23.743 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 154.1857ms
+2026-03-06 13:30:28.262 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/Idea - null null
+2026-03-06 13:30:28.267 +00:00 [WRN] Failed to determine the https port for redirect.
+2026-03-06 13:30:28.271 +00:00 [INF] Executing endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2)'
+2026-03-06 13:30:28.285 +00:00 [INF] Route matched with {action = "GetAll", controller = "Idea"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[GestãoDeIdeasV2.Models.Idea]] GetAll() on controller GestãoDeIdeasV2.Controllers.IdeaController (GestãoDeIdeasV2).
+2026-03-06 13:30:28.307 +00:00 [INF] Controller IdeaController - Action GetAll called at "2026-03-06T13:30:28.3066836Z"
+2026-03-06 13:30:28.351 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedAt", "i"."Description", "i"."Name", "i"."Priority", "i"."State"
+FROM "Ideas" AS "i"
+ORDER BY "i"."Id"
+2026-03-06 13:30:28.414 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[GestãoDeIdeasV2.Models.Idea, GestãoDeIdeasV2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-06 13:30:28.432 +00:00 [INF] Executed action GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2) in 141.3958ms
+2026-03-06 13:30:28.434 +00:00 [INF] Executed endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2)'
+2026-03-06 13:30:28.441 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/Idea - 200 null application/json; charset=utf-8 179.1699ms
+2026-03-06 13:32:30.870 +00:00 [INF] Application is shutting down...
+2026-03-06 13:32:38.080 +00:00 [INF] Acquiring an exclusive lock for migration application. See https://aka.ms/efcore-docs-migrations-lock for more information if this takes too long.
+2026-03-06 13:32:38.141 +00:00 [INF] Executed DbCommand (23ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsLock' AND "type" = 'table';
+2026-03-06 13:32:38.152 +00:00 [INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+INSERT OR IGNORE INTO "__EFMigrationsLock"("Id", "Timestamp") VALUES(1, '2026-03-06 13:32:38.1470086+00:00');
+SELECT changes();
+2026-03-06 13:32:38.207 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE IF NOT EXISTS "__EFMigrationsHistory" (
+    "MigrationId" TEXT NOT NULL CONSTRAINT "PK___EFMigrationsHistory" PRIMARY KEY,
+    "ProductVersion" TEXT NOT NULL
+);
+2026-03-06 13:32:38.213 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "name" = '__EFMigrationsHistory' AND "type" = 'table';
+2026-03-06 13:32:38.217 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "MigrationId", "ProductVersion"
+FROM "__EFMigrationsHistory"
+ORDER BY "MigrationId";
+2026-03-06 13:32:38.224 +00:00 [INF] No migrations were applied. The database is already up to date.
+2026-03-06 13:32:38.226 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+DELETE FROM "__EFMigrationsLock";
+2026-03-06 13:32:38.440 +00:00 [INF] Executed DbCommand (2ms) [Parameters=[@cutoffDate='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedAt", "i"."Description", "i"."Name", "i"."Priority", "i"."State"
+FROM "Ideas" AS "i"
+WHERE "i"."CreatedAt" <= @cutoffDate AND "i"."State" <> 1 AND "i"."State" <> 2
+2026-03-06 13:32:38.478 +00:00 [INF] Now listening on: http://localhost:5105
+2026-03-06 13:32:38.482 +00:00 [INF] Application started. Press Ctrl+C to shut down.
+2026-03-06 13:32:38.484 +00:00 [INF] Hosting environment: Development
+2026-03-06 13:32:38.485 +00:00 [INF] Content root path: C:\Users\spino\Desktop\GestãoDeideasV2\GestãoDeIdeasV2
+2026-03-06 13:32:50.729 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.html - null null
+2026-03-06 13:32:50.832 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.html - 304 null null 104.3299ms
+2026-03-06 13:32:50.864 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui.css - null null
+2026-03-06 13:32:50.864 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.css - null null
+2026-03-06 13:32:50.865 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-bundle.js - null null
+2026-03-06 13:32:50.865 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-standalone-preset.js - null null
+2026-03-06 13:32:50.865 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/index.js - null null
+2026-03-06 13:32:50.879 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.js - 304 null null 13.3346ms
+2026-03-06 13:32:50.883 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui.css - 304 null null 19.1702ms
+2026-03-06 13:32:50.883 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-bundle.js - 304 null null 18.0622ms
+2026-03-06 13:32:50.883 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/swagger-ui-standalone-preset.js - 304 null null 18.009ms
+2026-03-06 13:32:50.883 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/index.css - 304 null null 19.1638ms
+2026-03-06 13:32:51.009 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - null null
+2026-03-06 13:32:51.013 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/swagger/favicon-32x32.png - null null
+2026-03-06 13:32:51.017 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/favicon-32x32.png - 304 null null 4.36ms
+2026-03-06 13:32:51.141 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 132.5659ms
+2026-03-06 13:33:02.353 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/Idea - null null
+2026-03-06 13:33:02.358 +00:00 [WRN] Failed to determine the https port for redirect.
+2026-03-06 13:33:02.360 +00:00 [INF] Executing endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2)'
+2026-03-06 13:33:02.369 +00:00 [INF] Route matched with {action = "GetAll", controller = "Idea"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[GestãoDeIdeasV2.Models.Idea]] GetAll() on controller GestãoDeIdeasV2.Controllers.IdeaController (GestãoDeIdeasV2).
+2026-03-06 13:33:02.386 +00:00 [INF] Controller IdeaController - Action GetAll called at "2026-03-06T13:33:02.3856794Z"
+2026-03-06 13:33:02.421 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedAt", "i"."Description", "i"."Name", "i"."Priority", "i"."State"
+FROM "Ideas" AS "i"
+ORDER BY "i"."Id"
+2026-03-06 13:33:02.476 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[GestãoDeIdeasV2.Models.Idea, GestãoDeIdeasV2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-06 13:33:02.494 +00:00 [INF] Executed action GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2) in 119.4605ms
+2026-03-06 13:33:02.496 +00:00 [INF] Executed endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2)'
+2026-03-06 13:33:02.501 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/Idea - 200 null application/json; charset=utf-8 147.4226ms
+2026-03-06 13:33:23.931 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/Idea - null null
+2026-03-06 13:33:23.934 +00:00 [INF] Executing endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2)'
+2026-03-06 13:33:23.935 +00:00 [INF] Route matched with {action = "GetAll", controller = "Idea"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.List`1[GestãoDeIdeasV2.Models.Idea]] GetAll() on controller GestãoDeIdeasV2.Controllers.IdeaController (GestãoDeIdeasV2).
+2026-03-06 13:33:23.940 +00:00 [INF] Controller IdeaController - Action GetAll called at "2026-03-06T13:33:23.9400592Z"
+2026-03-06 13:33:24.007 +00:00 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedAt", "i"."Description", "i"."Name", "i"."Priority", "i"."State"
+FROM "Ideas" AS "i"
+ORDER BY "i"."Id"
+2026-03-06 13:33:24.010 +00:00 [INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[GestãoDeIdeasV2.Models.Idea, GestãoDeIdeasV2, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+2026-03-06 13:33:24.011 +00:00 [INF] Executed action GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2) in 74.3157ms
+2026-03-06 13:33:24.012 +00:00 [INF] Executed endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2)'
+2026-03-06 13:33:24.014 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/Idea - 200 null application/json; charset=utf-8 82.4726ms
+2026-03-06 13:33:45.795 +00:00 [INF] Request starting HTTP/1.1 GET http://localhost:5105/Idea/5 - null null
+2026-03-06 13:33:45.799 +00:00 [INF] Executing endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetById (GestãoDeIdeasV2)'
+2026-03-06 13:33:45.808 +00:00 [INF] Route matched with {action = "GetById", controller = "Idea"}. Executing controller action with signature Microsoft.AspNetCore.Mvc.ActionResult`1[GestãoDeIdeasV2.Models.Idea] GetById(Int32) on controller GestãoDeIdeasV2.Controllers.IdeaController (GestãoDeIdeasV2).
+2026-03-06 13:33:45.824 +00:00 [INF] Controller IdeaController - Action GetById - Id 5 called at "2026-03-06T13:33:45.8243346Z"
+2026-03-06 13:33:45.839 +00:00 [INF] Executed DbCommand (1ms) [Parameters=[@id='?' (DbType = Int32)], CommandType='"Text"', CommandTimeout='30']
+SELECT "i"."Id", "i"."CreatedAt", "i"."Description", "i"."Name", "i"."Priority", "i"."State"
+FROM "Ideas" AS "i"
+WHERE "i"."Id" = @id
+LIMIT 1
+2026-03-06 13:33:45.843 +00:00 [INF] Executing NotFoundObjectResult, writing value of type 'System.String'.
+2026-03-06 13:33:45.845 +00:00 [INF] Executed action GestãoDeIdeasV2.Controllers.IdeaController.GetById (GestãoDeIdeasV2) in 35.7126ms
+2026-03-06 13:33:45.848 +00:00 [INF] Executed endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetById (GestãoDeIdeasV2)'
+2026-03-06 13:33:45.850 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/Idea/5 - 404 null text/plain; charset=utf-8 54.4205ms

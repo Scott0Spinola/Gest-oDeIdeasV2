@@ -2,8 +2,22 @@ using GestãoDeIdeasV2.Data;
 using GestãoDeIdeasV2.Services;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
+using Serilog;
+
+
+Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Information()
+    .WriteTo.Console()
+    .WriteTo.File("Logs/log-.txt",
+                  rollingInterval: RollingInterval.Day,
+                  retainedFileCountLimit: 7)
+    .CreateLogger();
+
+
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Host.UseSerilog();
 
 builder.Services.AddControllers();
 
@@ -46,7 +60,7 @@ using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<IdeaContext>();
     db.Database.Migrate();
-    IdeaMaintenanceService.UpdateOutdatedIdeas( db, DateTime.UtcNow);
+    IdeaMaintenanceService.UpdateOutdatedIdeas(db, DateTime.UtcNow);
 }
 
 app.Run();

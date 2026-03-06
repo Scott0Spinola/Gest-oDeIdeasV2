@@ -12,10 +12,10 @@ namespace GestãoDeIdeasV2.Controllers
     public class IdeaController : ControllerBase
     {
         private readonly IdeasService _service;
-        
+
         private readonly ILogger<IdeaController> _logger;
-        
-        public IdeaController(IdeasService service, ILogger<IdeaController> logger,IAdviceService adviceService)
+
+        public IdeaController(IdeasService service, ILogger<IdeaController> logger, IAdviceService adviceService)
         {
             _service = service;
             _logger = logger;
@@ -33,10 +33,12 @@ namespace GestãoDeIdeasV2.Controllers
         [HttpGet]
         public ActionResult<List<Idea>> GetAll()
         {
+            _logger.LogInformation("Controller {Controller} - Action {Action} called at {Time}",
+            nameof(IdeaController), nameof(GetAll), DateTime.UtcNow);
             return Ok(_service.GetAll());
         }
 
-        
+
         /// <summary>
         /// Retrieves an idea by its unique identifier.
         /// </summary>
@@ -49,6 +51,10 @@ namespace GestãoDeIdeasV2.Controllers
         [HttpGet("{id:int}")]
         public ActionResult<Idea> GetById(int id)
         {
+
+            _logger.LogInformation("Controller {Controller} - Action {Action} - Id {Id} called at {Time}",
+            nameof(IdeaController), nameof(GetById), id, DateTime.UtcNow);
+
             var idea = _service.GetByIdea(id);
             if (idea is null)
             {
@@ -69,6 +75,9 @@ namespace GestãoDeIdeasV2.Controllers
         [HttpGet("priority/{priority:int}")]
         public ActionResult<List<Idea>> GetByPriority(int priority)
         {
+            _logger.LogInformation("Controller {Controller} - Action {Action} - Priority {Priority} called at {Time}",
+            nameof(IdeaController), nameof(GetByPriority), priority, DateTime.UtcNow);
+
             var idea = _service.GetByPriority(priority);
             if (idea.Count == 0)
             {
@@ -92,13 +101,18 @@ namespace GestãoDeIdeasV2.Controllers
         {
             try
             {
+                _logger.LogInformation("Create called at {Time}", DateTime.UtcNow);
                 var createdIdea = _service.Create(createIdea);
                 return CreatedAtAction(nameof(GetById), new { id = createdIdea.Id }, createdIdea);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                _logger.LogError(ex,
+                        "Error in {Controller}.{Action} at {Time}",
+                        nameof(IdeaController), nameof(Create), DateTime.UtcNow);
 
-                throw;
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
+
             }
         }
 
@@ -116,7 +130,8 @@ namespace GestãoDeIdeasV2.Controllers
         public ActionResult<Idea> Update(int id, UpdateIdea updateIdea)
         {
             try
-            {
+            {   
+                _logger.LogInformation("Update called at {Time}", DateTime.UtcNow);
                 var updatedIdea = _service.Update(id, updateIdea);
 
                 if (updatedIdea is null)
@@ -126,14 +141,15 @@ namespace GestãoDeIdeasV2.Controllers
 
                 return Ok(updatedIdea);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-
-                throw;
+                _logger.LogError(ex, "Error in {Controller}.{Action} for Id {Id} at {Time}",
+                nameof(IdeaController), nameof(Update), id, DateTime.UtcNow);
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
             }
 
         }
-        
+
         /// <summary>
         /// Deletes an idea.
         /// </summary>
@@ -147,7 +163,8 @@ namespace GestãoDeIdeasV2.Controllers
         public ActionResult Delete(int id)
         {
             try
-            {
+            {   
+                _logger.LogInformation("Delete called at {Time}", DateTime.UtcNow);
                 var DeleteIdea = _service.Delete(id);
                 if (!DeleteIdea)
                 {
@@ -155,10 +172,11 @@ namespace GestãoDeIdeasV2.Controllers
                 }
                 return NoContent();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                
-                throw;
+                _logger.LogError(ex, "Error in {Controller}.{Action} for Id {Id} at {Time}",
+                nameof(IdeaController), nameof(Update), id, DateTime.UtcNow);
+                return StatusCode(StatusCodes.Status500InternalServerError, "An unexpected error occurred.");
             }
         }
 

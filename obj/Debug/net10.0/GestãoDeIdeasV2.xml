@@ -69,6 +69,26 @@
             <response code="204">Idea deleted successfully.</response>
             <response code="404">No idea exists with the provided ID.</response>
         </member>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaWithAdviceController.GetAll">
+            <summary>
+            Retrieves all ideas with a random advice.
+            </summary>
+            <remarks>
+            Returns the complete list of ideas along with a single random advice message.
+            </remarks>
+            <response code="200">Ideas and advice retrieved successfully.</response>
+        </member>
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaWithAdviceController.GetById(System.Int32)">
+            <summary>
+            Retrieves a specific idea with a random advice.
+            </summary>
+            <param name="id">The unique identifier of the idea.</param>
+            <remarks>
+            Returns the idea that matches the provided ID together with a random advice message.
+            </remarks>
+            <response code="200">Idea and advice retrieved successfully.</response>
+            <response code="404">No idea exists with the provided ID.</response>
+        </member>
         <member name="T:GestãoDeIdeasV2.Migrations.InitialCreate">
             <inheritdoc />
         </member>

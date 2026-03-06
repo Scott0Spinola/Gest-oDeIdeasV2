@@ -36,6 +36,8 @@ public class IdeaWithAdviceController : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IdeasWithAdviceResponse>> GetAll()
     {
+        _logger.LogInformation("GetAll with Advice called at {Time}", DateTime.UtcNow);
+
         var ideas = _service.GetAll();
         var advice = await _adviceService.GetRandomAdviceAsync();
 
@@ -60,6 +62,8 @@ public class IdeaWithAdviceController : ControllerBase
     [HttpGet("{id:int}")]
     public async Task<ActionResult<IdeaWithAdviceResponse>> GetById(int id)
     {
+        _logger.LogInformation("GetById wiht Advice called at {Time}", DateTime.UtcNow);
+
         var idea = _service.GetByIdea(id);
         if (idea is null)
         {
