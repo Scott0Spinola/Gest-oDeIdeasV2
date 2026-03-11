@@ -22,6 +22,16 @@ public class IdeasService
         return _context.Ideas.OrderBy(i => i.Id).ToList();
     }
 
+    public async Task<PagedList<Idea>> GetAllPagedAsync(PageParameters pageParameters)
+    {
+        var query = _context.Ideas
+            .AsNoTracking()
+            .OrderBy(i => i.Id)
+            .AsQueryable();
+
+        return await PagedList<Idea>.CreateAsync(query, pageParameters.PageNumber, pageParameters.PageSize);
+    }
+
     public Idea? GetByIdea(int id)
     {
         return _context.Ideas.FirstOrDefault(i => i.Id == id);

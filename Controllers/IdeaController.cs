@@ -24,18 +24,21 @@ namespace GestãoDeIdeasV2.Controllers
 
 
         /// <summary>
-        /// Retrieves all ideas.
+        /// Retrieves all ideas with pagination.
         /// </summary>
+        /// <param name="pageParameters">Paging parameters from the query string.</param>
         /// <remarks>
-        /// Returns the complete list of ideas currently stored.
+        /// Returns a paged list of ideas based on the provided page number and size.
         /// </remarks>
         /// <response code="200">Ideas retrieved successfully.</response>
         [HttpGet]
-        public ActionResult<List<Idea>> GetAll()
+        public async Task<ActionResult<PagedList<Idea>>> GetAll([FromQuery] PageParameters pageParameters)
         {
             _logger.LogInformation("Controller {Controller} - Action {Action} called at {Time}",
             nameof(IdeaController), nameof(GetAll), DateTime.UtcNow);
-            return Ok(_service.GetAll());
+
+            var pagedIdeas = await _service.GetAllPagedAsync(pageParameters);
+            return Ok(pagedIdeas);
         }
 
 

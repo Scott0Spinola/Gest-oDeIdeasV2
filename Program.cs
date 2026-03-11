@@ -47,7 +47,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI(c =>
     {
-        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ideas.API v1");
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Ideas.API v2");
         c.DocumentTitle = "Ideas.API";
     });
 }

@@ -4,12 +4,13 @@
         <name>GestãoDeIdeasV2</name>
     </assembly>
     <members>
-        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.GetAll">
+        <member name="M:GestãoDeIdeasV2.Controllers.IdeaController.GetAll(PageParameters)">
             <summary>
-            Retrieves all ideas.
+            Retrieves all ideas with pagination.
             </summary>
+            <param name="pageParameters">Paging parameters from the query string.</param>
             <remarks>
-            Returns the complete list of ideas currently stored.
+            Returns a paged list of ideas based on the provided page number and size.
             </remarks>
             <response code="200">Ideas retrieved successfully.</response>
         </member>
@@ -104,6 +105,21 @@
         <member name="T:Program">
             <summary>
             Auto-generated public partial Program class for top-level statement apps.
+            </summary>
+        </member>
+        <member name="T:PageParameters">
+            <summary>
+            Represents page parameters
+            </summary>
+        </member>
+        <member name="P:PageParameters.PageNumber">
+            <summary>
+            Use for page number that is passed from frontend.
+            </summary>
+        </member>
+        <member name="P:PageParameters.PageSize">
+            <summary>
+            Use for page size that is passed from frontend.
             </summary>
         </member>
         <member name="M:Microsoft.AspNetCore.OpenApi.Generated.DocumentationCommentIdHelper.CreateDocumentationId(System.Type)">

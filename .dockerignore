@@ -1,0 +1,22 @@
+**/bin/
+**/obj/
+**/.vs/
+**/Properties
+**/*.sln
+
+
+# Logs
+**/logs/
+**/*.log
+
+
+# Git
+.git
+.gitignore
+
+# Docker
+Dockerfile*
+
+
+
+
