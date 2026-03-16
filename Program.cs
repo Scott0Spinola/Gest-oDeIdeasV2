@@ -1,8 +1,11 @@
 using GestãoDeIdeasV2.Data;
 using GestãoDeIdeasV2.Services;
+using GestãoDeIdeasV2.Filters;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 using Serilog;
+
+
 
 
 Log.Logger = new LoggerConfiguration()
@@ -19,7 +22,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog();
 
-builder.Services.AddControllers();
+// Always enforce API key via the filter, even in Development
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add<ApiKeyAuthorizationFilter>();
+});
 
 builder.Services.AddDbContext<IdeaContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));

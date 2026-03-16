@@ -9,10 +9,10 @@
       "GestãoDeIdeasV2/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "10.0.3",
-          "Microsoft.AspNetCore.OpenApi": "10.0.3",
           "Microsoft.EntityFrameworkCore.Design": "10.0.3",
           "Microsoft.EntityFrameworkCore.InMemory": "10.0.3",
           "Microsoft.EntityFrameworkCore.Sqlite": "10.0.3",
+          "Microsoft.OpenApi": "2.4.1",
           "Serilog.AspNetCore": "10.0.0",
           "Swashbuckle.AspNetCore": "10.1.4"
         },
@@ -34,17 +34,6 @@
         },
         "runtime": {
           "lib/net10.0/Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll": {
-            "assemblyVersion": "10.0.3.0",
-            "fileVersion": "10.0.326.7603"
-          }
-        }
-      },
-      "Microsoft.AspNetCore.OpenApi/10.0.3": {
-        "dependencies": {
-          "Microsoft.OpenApi": "2.4.1"
-        },
-        "runtime": {
-          "lib/net10.0/Microsoft.AspNetCore.OpenApi.dll": {
             "assemblyVersion": "10.0.3.0",
             "fileVersion": "10.0.326.7603"
           }
@@ -846,13 +835,6 @@
       "sha512": "sha512-EdsNq9yumLHn8V8bstUXNApBhQFQjGYgufwCAp6SOrXm320n9jNXNpvKS6zfith10wAexkGdFAz1ulW50l+9Kw==",
       "path": "microsoft.aspnetcore.diagnostics.entityframeworkcore/10.0.3",
       "hashPath": "microsoft.aspnetcore.diagnostics.entityframeworkcore.10.0.3.nupkg.sha512"
-    },
-    "Microsoft.AspNetCore.OpenApi/10.0.3": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-SAvSrKDgnY5GDjDAngOXxPhUvEKlTU/0zIq8zidqHvh/xnZBPs0Vc4LqwyvnmnafNnyUaivtRABz4K4wodXfSg==",
-      "path": "microsoft.aspnetcore.openapi/10.0.3",
-      "hashPath": "microsoft.aspnetcore.openapi.10.0.3.nupkg.sha512"
     },
     "Microsoft.Build.Framework/18.0.2": {
       "type": "package",
