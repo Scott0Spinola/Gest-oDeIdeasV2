@@ -115,3 +115,4 @@ ORDER BY "i"."Id"
 2026-03-10 12:04:05.486 +00:00 [INF] Executed endpoint 'GestãoDeIdeasV2.Controllers.IdeaController.GetAll (GestãoDeIdeasV2)'
 2026-03-10 12:04:05.491 +00:00 [INF] Request finished HTTP/1.1 GET http://localhost:5105/Idea - 200 null application/json; charset=utf-8 157.8563ms
 2026-03-10 12:10:48.741 +00:00 [INF] Application is shutting down...
+You have been hacked
